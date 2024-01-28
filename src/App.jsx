@@ -33,6 +33,10 @@ function App() {
     triggerOnce: false,
   });
 
+  const [ref1, inView1] = useInView({
+    triggerOnce: true,
+  });
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -191,9 +195,9 @@ function App() {
           <div className="h-[88vh]  w-full bg-gray-200" id="AboutMe">
             <motion.div
               className="w-full h-[100%] flex items-center"
-              ref={ref}
+              ref={ref1}
               initial={{ opacity: 0, x: "-100%" }}
-              animate={{ opacity: 1, x: inView ? "0%" : "100%" }}
+              animate={{ opacity: 1, x: inView1 ? "0%" : "100%" }}
               exit={{ opacity: 0, x: "100%" }}
               transition={{ duration: 1, ease: "easeInOut" }}
             >
