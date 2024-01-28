@@ -1,7 +1,9 @@
 import myImage from "./assets/me-transparent1.png";
 import vectorImg from "./assets/vector-img.png";
+import me1 from "./assets/me2.jpeg";
 import { useState, useEffect } from "react";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import "./App.css";
 
 function App() {
@@ -23,6 +25,10 @@ function App() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+  });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -55,29 +61,31 @@ function App() {
 
   useEffect(() => {
     // Animate the background color change
-    controls.start({ backgroundColor: scrolled ? "#800000" : "transparent" });
+    controls.start({
+      backgroundColor: scrolled ? "rgba(128, 0, 0, 1)" : "rgba(128, 0, 0, 0)",
+    });
   }, [scrolled, controls]);
 
   return (
-    <div>
-      <AnimatePresence>
+    <AnimatePresence>
+      <div>
         <motion.header
           initial={{ backgroundColor: "transparent" }}
           animate={controls}
           exit={{ backgroundColor: "transparent" }}
-          className={`h-[14vh] w-full ${
+          className={`h-[12vh] w-full ${
             scrolled
               ? "bg-main text-white fixed z-20  shadow-xl"
               : "bg-transparent text-red-700"
-          } flex items-center  font-sans ease-out duration-500`}
+          } flex items-center  font-sans ease-in-out duration-500`}
         >
           <div>
-            <h1 className="text-center text-4xl font-semibold ml-0 lg:ml-36">
+            <h1 className="text-center text-2xl font-semibold ml-0 lg:ml-36">
               Lagria
             </h1>
           </div>
-          <nav className="ml-auto mr-28 text-2xl font-medium">
-            <ul className="flex items-center justify-center gap-16">
+          <nav className="ml-auto mr-28 text-xl font-semibold">
+            <ul className="flex items-center justify-center gap-10">
               <li>About Me</li>
               <li>What I do</li>
               <li>Works</li>
@@ -85,12 +93,10 @@ function App() {
             </ul>
           </nav>
         </motion.header>
-      </AnimatePresence>
 
-      <AnimatePresence>
-        <main className="font-sans">
+        <main className="font-sans text-md">
           <div className="flex items-center justify-center h-[86vh] w-full text-black">
-            <div className="w-1/2 h-[86vh] ">
+            <div className="w-1/2 h-[88vh] ">
               <motion.div
                 variants={containerVariants}
                 initial="hidden"
@@ -99,15 +105,12 @@ function App() {
               >
                 <motion.p
                   variants={paragraphVariants}
-                  className="text-4xl font-medium mb-12"
+                  className="text-2xl font-medium mb-12"
                 >
                   Software Developer
                 </motion.p>
-                <motion.p
-                  variants={paragraphVariants}
-                  className="text-[3.0rem]"
-                >
-                  Hello, my name is{" "}
+                <motion.p variants={paragraphVariants} className="text-4xl">
+                  Hello, I am{" "}
                   <span className="font-bold italic text-red-700">
                     Mark John Lagria
                   </span>{" "}
@@ -115,7 +118,7 @@ function App() {
                 </motion.p>
                 <motion.p
                   variants={paragraphVariants}
-                  className="w-[90%] text-xl mt-10"
+                  className="w-[90%] text-lg mt-10"
                 >
                   I am an aspiring software developer who is passionate about
                   creating innovative solutions and delivering high-quality web
@@ -150,7 +153,7 @@ function App() {
                   variants={rightToLeftpargraph}
                   src={vectorImg}
                   alt="react-logo"
-                  className="w-[85%] ml-24 mt-10 h-[70vh] absolute"
+                  className="w-[80%] ml-24 mt-10 h-[70vh] absolute"
                 />
                 <motion.img
                   variants={rightToLeftpargraph}
@@ -161,10 +164,41 @@ function App() {
               </motion.div>
             </div>
           </div>
-          <div className="h-[100vh]">WE</div>
+          <div className="h-[88vh]  w-full bg-gray-200">
+            <motion.div
+              className="w-full h-[100%] flex items-center"
+              ref={ref}
+              initial={{ opacity: 0, x: "-100%" }}
+              animate={{ opacity: 1, x: inView ? "0%" : "100%" }}
+              exit={{ opacity: 0, x: "100%" }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+            >
+              <motion.div className="h-[75%] w-[30%] border-2 border-gray-700 relative ml-52 rounded-2xl">
+                <motion.img
+                  src={me1}
+                  alt=""
+                  className="w-full h-[100%] absolute -top-3 -left-3 rounded-2xl object-cover"
+                />
+              </motion.div>
+              <motion.div className="w-[40%]">
+                <motion.p className="text-4xl font-bold ml-10">
+                  About Me
+                </motion.p>
+                <motion.p className="text-lg ml-10 mt-10">
+                  I am Mark John H. Lagria, a 4th-year IT student at the
+                  University of Mindanao. I am an aspiring software developer
+                  who is passionate about creating innovative solutions and
+                  delivering high-quality web and mobile applications. I live in
+                  Edullantes Compound, Camasura Phase 2, SGR Village, Catalunan
+                  Grande Davao City. My hobbies are playing computer games,
+                  watching anime, live-action tv series, and coding.
+                </motion.p>
+              </motion.div>
+            </motion.div>
+          </div>
         </main>
-      </AnimatePresence>
-    </div>
+      </div>
+    </AnimatePresence>
   );
 }
 
