@@ -16,7 +16,6 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Check if the user has scrolled down more than a certain threshold
       const isScrolled = window.scrollY > 50;
       setScrolled(isScrolled);
     };
@@ -31,7 +30,7 @@ function App() {
   }, []);
 
   const [ref, inView] = useInView({
-    triggerOnce: true,
+    triggerOnce: false,
   });
 
   const containerVariants = {
@@ -198,11 +197,11 @@ function App() {
               exit={{ opacity: 0, x: "100%" }}
               transition={{ duration: 1, ease: "easeInOut" }}
             >
-              <motion.div className="h-[75%] w-[30%] border-2 border-gray-700 relative ml-52 rounded-br-2xl rounded-tl-2xl">
+              <motion.div className="h-[75%] w-[30%] border-2 border-gray-700 relative ml-52 rounded-br-2xl rounded-tl-2xl ">
                 <motion.img
                   src={me1}
                   alt=""
-                  className="w-full h-[100%] absolute -top-3 -left-3 rounded-br-2xl rounded-tl-2xl object-cover"
+                  className="w-full h-[100%] absolute -top-3 -left-3 rounded-br-2xl rounded-tl-2xl object-cover  "
                 />
               </motion.div>
               <motion.div className="w-[40%]">
@@ -231,7 +230,14 @@ function App() {
             </motion.p>
             <motion.div className="w-full h-[60vh] flex items-center flex-col">
               <motion.div className="h-[20vh] w-[80%] flex items-center justify-center mt-10  ml-10 ">
-                <motion.div className="text-2xl flex font-bold  w-[40%] bg-main h-40 px-4 py-2 rounded-xl">
+                <motion.div
+                  ref={ref}
+                  initial={{ opacity: 0, x: "-100%" }}
+                  animate={{ opacity: 1, x: inView ? "0%" : "100%" }}
+                  exit={{ opacity: 0, x: "100%" }}
+                  transition={{ duration: 1, ease: "easeInOut" }}
+                  className="text-2xl flex font-bold  w-[40%] bg-main h-40 px-4 py-2 rounded-xl shadow-xl"
+                >
                   <motion.div className="h-[100%] w-full flex items-center">
                     <motion.div className="bg-white p-2 rounded-xl">
                       <motion.img
@@ -252,7 +258,14 @@ function App() {
                     </motion.div>
                   </motion.div>
                 </motion.div>
-                <motion.div className="text-2xl flex font-bold ml-10  w-[40%] bg-main h-40 px-4 py-2 rounded-xl">
+                <motion.div
+                  ref={ref}
+                  initial={{ opacity: 0, x: "100%" }}
+                  animate={{ opacity: 1, x: inView ? "0%" : "100%" }}
+                  exit={{ opacity: 0, x: "100%" }}
+                  transition={{ duration: 1, ease: "easeInOut" }}
+                  className="text-2xl flex font-bold ml-10  w-[40%] bg-main h-40 px-4 py-2 rounded-xl shadow-xl"
+                >
                   <motion.div className="h-[100%] w-full flex items-center">
                     <motion.div className="bg-white p-2 rounded-xl">
                       <motion.img
@@ -274,7 +287,14 @@ function App() {
                   </motion.div>
                 </motion.div>
               </motion.div>
-              <motion.div className="text-2xl flex font-bold mt-10 w-[40%] bg-main h-40 px-4 py-2 rounded-xl">
+              <motion.div
+                ref={ref}
+                initial={{ opacity: 0, y: "100%" }}
+                animate={{ opacity: 1, y: inView ? "0%" : "100%" }}
+                exit={{ opacity: 0, y: "100%" }}
+                transition={{ duration: 1, ease: "easeInOut" }}
+                className="text-2xl flex font-bold mt-10 w-[40%] bg-main h-40 px-4 py-2 rounded-xl shadow-xl"
+              >
                 <motion.div className="h-[100%] w-full flex items-center">
                   <motion.div className="bg-white p-2 rounded-xl">
                     <motion.img
