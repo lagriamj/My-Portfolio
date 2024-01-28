@@ -34,7 +34,7 @@ function App() {
   });
 
   const [ref1, inView1] = useInView({
-    triggerOnce: true,
+    triggerOnce: false,
   });
 
   const containerVariants = {
@@ -196,8 +196,8 @@ function App() {
             <motion.div
               className="w-full h-[100%] flex items-center"
               ref={ref1}
-              initial={{ opacity: 0, x: "-100%" }}
-              animate={{ opacity: 1, x: inView1 ? "0%" : "100%" }}
+              initial={{ opacity: 0, x: "-10%" }}
+              animate={{ opacity: 1, x: inView1 ? "0%" : "10%" }}
               exit={{ opacity: 0, x: "100%" }}
               transition={{ duration: 1, ease: "easeInOut" }}
             >
@@ -236,9 +236,9 @@ function App() {
               <motion.div className="h-[20vh] w-[80%] flex items-center justify-center mt-10  ml-10 ">
                 <motion.div
                   ref={ref}
-                  initial={{ opacity: 0, x: "-100%" }}
-                  animate={{ opacity: 1, x: inView ? "0%" : "100%" }}
-                  exit={{ opacity: 0, x: "100%" }}
+                  initial={{ opacity: 0, x: "-20%" }}
+                  animate={{ opacity: 1, x: inView ? "0%" : "20%" }}
+                  exit={{ opacity: 0, x: "20%" }}
                   transition={{ duration: 1, ease: "easeInOut" }}
                   className="text-2xl flex font-bold  w-[40%] bg-main h-40 px-4 py-2 rounded-xl shadow-xl"
                 >
@@ -264,9 +264,9 @@ function App() {
                 </motion.div>
                 <motion.div
                   ref={ref}
-                  initial={{ opacity: 0, x: "100%" }}
-                  animate={{ opacity: 1, x: inView ? "0%" : "100%" }}
-                  exit={{ opacity: 0, x: "100%" }}
+                  initial={{ opacity: 0, x: "20%" }}
+                  animate={{ opacity: 1, x: inView ? "0%" : "20%" }}
+                  exit={{ opacity: 0, x: "20%" }}
                   transition={{ duration: 1, ease: "easeInOut" }}
                   className="text-2xl flex font-bold ml-10  w-[40%] bg-main h-40 px-4 py-2 rounded-xl shadow-xl"
                 >
@@ -293,9 +293,9 @@ function App() {
               </motion.div>
               <motion.div
                 ref={ref}
-                initial={{ opacity: 0, y: "100%" }}
-                animate={{ opacity: 1, y: inView ? "0%" : "100%" }}
-                exit={{ opacity: 0, y: "100%" }}
+                initial={{ opacity: 0, y: "20%" }}
+                animate={{ opacity: 1, y: inView ? "0%" : "20%" }}
+                exit={{ opacity: 0, y: "20%" }}
                 transition={{ duration: 1, ease: "easeInOut" }}
                 className="text-2xl flex font-bold mt-10 w-[40%] bg-main h-40 px-4 py-2 rounded-xl shadow-xl"
               >
