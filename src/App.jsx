@@ -236,9 +236,9 @@ function App() {
               <motion.div className="h-[20vh] w-[80%] flex items-center justify-center mt-10  ml-10 ">
                 <motion.div
                   ref={ref}
-                  initial={{ opacity: 0, x: "-20%" }}
-                  animate={{ opacity: 1, x: inView ? "0%" : "20%" }}
-                  exit={{ opacity: 0, x: "20%" }}
+                  initial={{ opacity: 0, x: "-40%" }}
+                  animate={{ opacity: 1, x: inView ? "0%" : "40%" }}
+                  exit={{ opacity: 0, x: "40%" }}
                   transition={{ duration: 1, ease: "easeInOut" }}
                   className="text-2xl flex font-bold  w-[40%] bg-main h-40 px-4 py-2 rounded-xl shadow-xl"
                 >
@@ -264,9 +264,9 @@ function App() {
                 </motion.div>
                 <motion.div
                   ref={ref}
-                  initial={{ opacity: 0, x: "20%" }}
-                  animate={{ opacity: 1, x: inView ? "0%" : "20%" }}
-                  exit={{ opacity: 0, x: "20%" }}
+                  initial={{ opacity: 0, x: "40%" }}
+                  animate={{ opacity: 1, x: inView ? "0%" : "40%" }}
+                  exit={{ opacity: 0, x: "40%" }}
                   transition={{ duration: 1, ease: "easeInOut" }}
                   className="text-2xl flex font-bold ml-10  w-[40%] bg-main h-40 px-4 py-2 rounded-xl shadow-xl"
                 >
@@ -293,9 +293,9 @@ function App() {
               </motion.div>
               <motion.div
                 ref={ref}
-                initial={{ opacity: 0, y: "20%" }}
-                animate={{ opacity: 1, y: inView ? "0%" : "20%" }}
-                exit={{ opacity: 0, y: "20%" }}
+                initial={{ opacity: 0, y: "40%" }}
+                animate={{ opacity: 1, y: inView ? "0%" : "40%" }}
+                exit={{ opacity: 0, y: "40%" }}
                 transition={{ duration: 1, ease: "easeInOut" }}
                 className="text-2xl flex font-bold mt-10 w-[40%] bg-main h-40 px-4 py-2 rounded-xl shadow-xl"
               >
